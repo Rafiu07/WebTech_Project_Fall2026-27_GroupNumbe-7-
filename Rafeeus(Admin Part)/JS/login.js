@@ -1,4 +1,4 @@
-// Hard-coded credentials (change these whenever you want)
+
 var ADMIN_USERNAME = "admin";
 var ADMIN_PASSWORD = "admin123";
 
@@ -25,7 +25,7 @@ form.addEventListener("submit", function (e) {
     sessionStorage.setItem("loggedIn", "true");
     showMessage("Login successful!", "success");
 
-    // Go to the dashboard after a short moment
+   
     setTimeout(function () {
       window.location.href = "dashboard.html";
     }, 800);
