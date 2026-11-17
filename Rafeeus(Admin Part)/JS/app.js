@@ -1,14 +1,9 @@
-// =====================================================
-// app.js - shared code for all admin pages
-// (login check, dummy data, saving data, small helpers)
-// =====================================================
 
-// 1) Login check: if the admin is not logged in, go back to the login page
 if (sessionStorage.getItem("loggedIn") !== "true") {
   window.location.href = "login.html";
 }
 
-// 2) Dummy data (used only the first time the pages are opened)
+
 var SEED = {
   volunteers: [
     { id: 1, name: "Rahim Uddin",    phone: "01712-345678", email: "rahim.uddin@example.com" },
@@ -76,7 +71,7 @@ var SEED = {
   ]
 };
 
-// 3) Load and save data in the browser (so changes stay when you switch pages)
+
 function saveData(key, list) {
   try {
     localStorage.setItem("ngo_" + key, JSON.stringify(list));
@@ -110,7 +105,7 @@ function nextId(list) {
   return max + 1;
 }
 
-// 4) Small helpers
+
 function makeEl(tag, text, className) {
   var el = document.createElement(tag);
   if (text !== undefined && text !== null) {
@@ -153,7 +148,7 @@ function logout() {
   window.location.href = "login.html";
 }
 
-// 5) Connect the Logout button in the nav bar (it has id="logoutBtn")
+
 document.addEventListener("DOMContentLoaded", function () {
   var logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
