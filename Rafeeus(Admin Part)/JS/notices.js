@@ -1,12 +1,9 @@
-// =====================================================
-// notices.js - the notice board page
-// =====================================================
 
-// Get the list of notices
+
 var notices = loadData("notices", startNotices);
 
 
-// Draw the notices on the page
+
 function showNotices() {
   var html = "";
 
@@ -30,21 +27,21 @@ function showNotices() {
 }
 
 
-// Post a new notice (runs when "Post Notice" is clicked)
+
 function addNotice() {
   var title = document.getElementById("title").value.trim();
   var text = document.getElementById("text").value.trim();
 
-  // Both boxes must be filled in
+
   if (title === "" || text === "") {
     showMessage("Please fill in the title and the message.", "error");
     return;
   }
 
-  // Today's date, for example "Wed Nov 18 2026"
+ 
   var today = new Date().toDateString();
 
-  // unshift puts the new notice at the START of the list, so it shows on top
+  
   notices.unshift({ title: title, message: text, date: today });
   saveData("notices", notices);
   showNotices();
@@ -55,10 +52,10 @@ function addNotice() {
 }
 
 
-// Remove a notice (runs when a "Remove" button is clicked)
+
 function removeNotice(index) {
   if (confirm("Remove this notice?") === true) {
-    notices.splice(index, 1);   // take 1 item out at this position
+    notices.splice(index, 1);   
     saveData("notices", notices);
     showNotices();
     showMessage("Notice removed.", "success");
