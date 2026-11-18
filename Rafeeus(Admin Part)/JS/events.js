@@ -1,13 +1,9 @@
-// =====================================================
-// events.js - the event management page
-// The admin can only look at events here.
-// =====================================================
 
-// Get the list of events
+
 var events = loadData("events", startEvents);
 
 
-// Draw the table on the page
+
 function showEvents() {
   var rows = "";
 

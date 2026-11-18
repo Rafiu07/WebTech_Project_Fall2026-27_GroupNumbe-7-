@@ -1,7 +1,4 @@
-// =====================================================
-// dashboard.js - the dashboard page
-// Shows how many items are in each list.
-// =====================================================
+
 
 var volunteers = loadData("volunteers", startVolunteers);
 var organizations = loadData("organizations", startOrganizations);
