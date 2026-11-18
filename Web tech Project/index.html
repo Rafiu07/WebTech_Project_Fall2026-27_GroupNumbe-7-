@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <title> Corporate Portal - Coordinator Login </title>
+    </head>
+
+    <body class="login-body">
+        <main class="login-wrap">
+
+            <div class="brand">
+                
+                <svg class="emblem" viewBox="0 0 64 64" role="img" aria-label="Company emblem">
+                    <circle cx="32" cy="32" r="30" fill="#0f172a" stroke="#2563eb" stroke-width="3"/>
+                    <rect x="20" y="18" width="14" height="30" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                    <rect x="34" y="25" width="10" height="23" rx="1.5" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                    <line x1="24" y1="24" x2="30" y2="24" stroke="#ffffff" stroke-width="2"/>
+                    <line x1="24" y1="30" x2="30" y2="30" stroke="#ffffff" stroke-width="2"/>
+                    <line x1="24" y1="36" x2="30" y2="36" stroke="#ffffff" stroke-width="2"/>
+                    <line x1="37" y1="31" x2="41" y2="31" stroke="#ffffff" stroke-width="2"/>
+                    <line x1="37" y1="37" x2="41" y2="37" stroke="#ffffff" stroke-width="2"/>
+                </svg>
+                <h1> Corporate Volunteer Portal </h1>
+                <p class="subtitle"> CSR &amp; Workforce Management &mdash; Enterprise Module </p>
+            </div>
+
+            <div class="card login-card">
+                <h2> Coordinator sign in </h2>
+
+                <form id="loginForm" novalidate>
+                    <div class="field">
+                        <label for="OfficialEmail"> Corporate Email ID </label>
+                        <input type="email" id="OfficialEmail" name="OfficialEmail" placeholder="name@company.com" autocomplete="username">
+                        <p class="error" id="EmailError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="Password"> Password </label>
+                        <input type="password" id="Password" name="Password" placeholder="Enter your password" autocomplete="current-password">
+                        <p class="error" id="PasswordError"></p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block"> Sign in </button>
+                </form>
+
+                <p class="note"> Authorised company personnel only. Access is monitored. </p>
+            </div>
+
+        </main>
+    </body>
+</html>
