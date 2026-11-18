@@ -1,17 +1,9 @@
-// =====================================================
-// app.js - shared by every admin page
-// (it is loaded at the bottom of each admin page)
-// =====================================================
-
-
-// PART 1: Login check
-// If the admin has not logged in, send them back to the login page.
 if (sessionStorage.getItem("loggedIn") !== "yes") {
   window.location.href = "login.html";
 }
 
 
-// PART 2: Logout button
+
 function logout() {
   sessionStorage.removeItem("loggedIn");
   window.location.href = "login.html";
@@ -20,8 +12,6 @@ function logout() {
 document.getElementById("logoutBtn").onclick = logout;
 
 
-// PART 3: Saving and loading data
-// The browser keeps our lists so they are still there on the next page.
 function saveData(name, list) {
   localStorage.setItem("admin_" + name, JSON.stringify(list));
 }
@@ -29,7 +19,7 @@ function saveData(name, list) {
 function loadData(name, startingList) {
   var saved = localStorage.getItem("admin_" + name);
 
-  // Nothing saved yet? Use the starting (dummy) list.
+
   if (saved === null) {
     return startingList;
   }
@@ -38,8 +28,6 @@ function loadData(name, startingList) {
 }
 
 
-// PART 4: Show a message in the message box
-// type is "error" (red) or "success" (green)
 function showMessage(text, type) {
   var box = document.getElementById("message");
   box.textContent = text;
@@ -47,7 +35,6 @@ function showMessage(text, type) {
 }
 
 
-// PART 5: Starting (dummy) data
 var startVolunteers = [
   { name: "Rahim Uddin",   phone: "01712-345678", email: "rahim.uddin@example.com" },
   { name: "Nusrat Jahan",  phone: "01819-234567", email: "nusrat.jahan@example.com" },
