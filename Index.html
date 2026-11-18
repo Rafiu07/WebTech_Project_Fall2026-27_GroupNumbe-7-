@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <head>
+
+        <title> Govt. Portal - Nodal Officer Login </title>
+    </head>
+
+    <body class="login-body">
+        <main class="login-wrap">
+
+            <div class="brand">
+                <svg class="emblem" viewBox="0 0 64 64" role="img" aria-label="Government emblem">
+                    <circle cx="32" cy="32" r="30" fill="#0f172a" stroke="#2563eb" stroke-width="3"/>
+                    <path d="M32 12 L48 19 V32 C48 41 41 48 32 52 C23 48 16 41 16 32 V19 Z" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                    <polygon points="32,21 34.6,28.4 42.4,28.6 36.2,33.3 38.4,40.8 32,36.4 25.6,40.8 27.8,33.3 21.6,28.6 29.4,28.4" fill="#ffffff"/>
+                </svg>
+                <h1> Government Nodal Officer Portal </h1>
+                <p class="subtitle"> Volunteer Management System &mdash; Govt. Module </p>
+            </div>
+
+            <div class="card login-card">
+                <h2> Officer sign in </h2>
+
+                <form id="loginForm" novalidate>
+                    <div class="field">
+                        <label for="OfficialEmail"> Official Email ID </label>
+                        <input type="email" id="OfficialEmail" name="OfficialEmail" placeholder="name@dept.gov.bd" autocomplete="username">
+                        <p class="error" id="EmailError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="Password"> Password </label>
+                        <input type="password" id="Password" name="Password" placeholder="Enter your password" autocomplete="current-password">
+                        <p class="error" id="PasswordError"></p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block"> Sign in </button>
+                </form>
+
+                <p class="note"> Authorised government officers only. Access is monitored. </p>
+            </div>
+
+        </main>
+    </body>
+</html>
