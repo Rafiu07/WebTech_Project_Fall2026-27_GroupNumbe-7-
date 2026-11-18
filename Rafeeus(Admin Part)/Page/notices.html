@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notice Board</title>
-  <link rel="stylesheet" href="../Design/style.css">
-  <script src="../JS/app.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="admin">
 
@@ -28,19 +27,17 @@
 
     <section class="card">
       <h2>Post a Notice</h2>
-      <form id="addForm">
-        <div class="form-grid">
-          <div class="full">
-            <label for="title">Title</label>
-            <input type="text" id="title" placeholder="Enter notice title">
-          </div>
-          <div class="full">
-            <label for="text">Message</label>
-            <textarea id="text" rows="3" placeholder="Write the notice here"></textarea>
-          </div>
+      <div class="form-grid">
+        <div class="full">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="Enter notice title">
         </div>
-        <button type="submit" class="btn">Post Notice</button>
-      </form>
+        <div class="full">
+          <label for="text">Message</label>
+          <textarea id="text" rows="3" placeholder="Write the notice here"></textarea>
+        </div>
+      </div>
+      <button type="button" id="addBtn" class="btn">Post Notice</button>
     </section>
 
     <section class="card">
@@ -49,7 +46,8 @@
     </section>
   </main>
 
-  <script src="../JS/notices.js"></script>
+  <script src="app.js"></script>
+  <script src="notices.js"></script>
 
 </body>
 </html>

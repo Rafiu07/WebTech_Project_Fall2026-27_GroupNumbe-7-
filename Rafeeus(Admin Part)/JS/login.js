@@ -1,35 +1,42 @@
-// Hard-coded credentials (change these whenever you want)
-var ADMIN_USERNAME = "admin";
-var ADMIN_PASSWORD = "admin123";
+// =====================================================
+// login.js - the login page
+// =====================================================
 
-var form = document.getElementById("loginForm");
-var messageBox = document.getElementById("message");
+// The username and password that are allowed to log in.
+// (You can change them here.)
+var correctUsername = "admin";
+var correctPassword = "admin123";
 
+
+// Show a message in the message box
 function showMessage(text, type) {
-  messageBox.textContent = text;
-  messageBox.className = "message " + type;
+  var box = document.getElementById("message");
+  box.textContent = text;
+  box.className = "message " + type;
 }
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
 
+// This runs when the Login button is clicked
+function login() {
   var username = document.getElementById("username").value.trim();
   var password = document.getElementById("password").value;
 
+  // 1. Both boxes must be filled in
   if (username === "" || password === "") {
     showMessage("Please fill in both fields.", "error");
     return;
   }
 
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-    sessionStorage.setItem("loggedIn", "true");
-    showMessage("Login successful!", "success");
-
-    // Go to the dashboard after a short moment
-    setTimeout(function () {
-      window.location.href = "dashboard.html";
-    }, 800);
+  // 2. Check the username and password
+  if (username === correctUsername && password === correctPassword) {
+    // Remember that the admin is logged in, then open the dashboard
+    sessionStorage.setItem("loggedIn", "yes");
+    window.location.href = "dashboard.html";
   } else {
-    showMessage("Invalid username or password.", "error");
+    showMessage("Wrong username or password.", "error");
   }
-});
+}
+
+
+// When the Login button is clicked, run the login function
+document.getElementById("loginBtn").onclick = login;

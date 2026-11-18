@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Sign Up</title>
-  <link rel="stylesheet" href="../Design/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -14,26 +14,24 @@
 
     <div id="message" class="message"></div>
 
-    <form id="signupForm">
-      <label for="fullname">Full Name</label>
-      <input type="text" id="fullname" placeholder="Enter your full name" autocomplete="name">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" placeholder="Enter your full name">
 
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" autocomplete="email">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
 
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="At least 6 characters" autocomplete="new-password">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="At least 6 characters">
 
-      <label for="confirm">Confirm Password</label>
-      <input type="password" id="confirm" placeholder="Re-enter your password" autocomplete="new-password">
+    <label for="confirm">Confirm Password</label>
+    <input type="password" id="confirm" placeholder="Re-enter your password">
 
-      <button type="submit">Sign Up</button>
-    </form>
+    <button type="button" id="signupBtn">Sign Up</button>
 
     <p class="switch">Already have an account? <a href="login.html">Login</a></p>
   </div>
 
-  <script src="../JS/signup.js"></script>
+  <script src="signup.js"></script>
 
 </body>
 </html>

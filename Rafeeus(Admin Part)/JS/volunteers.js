@@ -1,87 +1,84 @@
-var volunteers = loadData("volunteers");
-var tableBody = document.getElementById("tableBody");
-var countEl = document.getElementById("count");
-var form = document.getElementById("addForm");
+// =====================================================
+// volunteers.js - the volunteer management page
+// =====================================================
 
-function render() {
-  tableBody.innerHTML = "";
-  countEl.textContent = volunteers.length;
+// Get the list of volunteers (saved list, or the starting list the first time)
+var volunteers = loadData("volunteers", startVolunteers);
 
+
+// Draw the table on the page
+function showVolunteers() {
+  var rows = "";
+
+  // Go through the list one volunteer at a time and build one table row each
+  for (var i = 0; i < volunteers.length; i++) {
+    rows = rows + "<tr>";
+    rows = rows + "<td>" + (i + 1) + "</td>";
+    rows = rows + "<td>" + volunteers[i].name + "</td>";
+    rows = rows + "<td>" + volunteers[i].phone + "</td>";
+    rows = rows + "<td>" + volunteers[i].email + "</td>";
+    rows = rows + "<td><button class='btn-danger' onclick='removeVolunteer(" + i + ")'>Remove</button></td>";
+    rows = rows + "</tr>";
+  }
+
+  // If the list is empty, show a short message instead
   if (volunteers.length === 0) {
-    var emptyRow = document.createElement("tr");
-    var emptyCell = makeEl("td", "No volunteers found.", "empty");
-    emptyCell.colSpan = 5;
-    emptyRow.appendChild(emptyCell);
-    tableBody.appendChild(emptyRow);
-    return;
+    rows = "<tr><td colspan='5' class='empty'>No volunteers found.</td></tr>";
   }
 
-  volunteers.forEach(function (v, i) {
-    var row = document.createElement("tr");
-    row.appendChild(makeEl("td", i + 1));
-    row.appendChild(makeEl("td", v.name));
-    row.appendChild(makeEl("td", v.phone));
-    row.appendChild(makeEl("td", v.email));
-
-    var actionCell = document.createElement("td");
-    var removeBtn = makeEl("button", "Remove", "btn-danger");
-    removeBtn.type = "button";
-    removeBtn.addEventListener("click", function () {
-      removeVolunteer(v.id, v.name);
-    });
-    actionCell.appendChild(removeBtn);
-    row.appendChild(actionCell);
-
-    tableBody.appendChild(row);
-  });
+  document.getElementById("tableBody").innerHTML = rows;
+  document.getElementById("count").textContent = volunteers.length;
 }
 
-function removeVolunteer(id, name) {
-  if (!confirm("Remove volunteer " + name + "?")) {
-    return;
-  }
-  volunteers = volunteers.filter(function (v) {
-    return v.id !== id;
-  });
-  saveData("volunteers", volunteers);
-  render();
-  showMessage(name + " has been removed.", "success");
-}
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
+// Add a new volunteer (runs when "Add Volunteer" is clicked)
+function addVolunteer() {
   var name = document.getElementById("name").value.trim();
   var phone = document.getElementById("phone").value.trim();
   var email = document.getElementById("email").value.trim();
 
+  // 1. All boxes must be filled in
   if (name === "" || phone === "" || email === "") {
     showMessage("Please fill in all fields.", "error");
     return;
   }
 
-  if (!/^[0-9+\-\s]{7,16}$/.test(phone)) {
-    showMessage("Please enter a valid phone number.", "error");
-    return;
-  }
-
-  if (!isValidEmail(email)) {
+  // 2. The email must contain an @
+  if (email.indexOf("@") === -1) {
     showMessage("Please enter a valid email address.", "error");
     return;
   }
 
-  for (var i = 0; i < volunteers.length; i++) {
-    if (volunteers[i].email.toLowerCase() === email.toLowerCase()) {
-      showMessage("A volunteer with this email already exists.", "error");
-      return;
-    }
-  }
-
-  volunteers.push({ id: nextId(volunteers), name: name, phone: phone, email: email });
+  // 3. Add the volunteer to the end of the list, save, and redraw the table
+  volunteers.push({ name: name, phone: phone, email: email });
   saveData("volunteers", volunteers);
-  render();
-  form.reset();
-  showMessage(name + " has been added.", "success");
-});
+  showVolunteers();
 
-render();
+  // 4. Clear the boxes and show a message
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("email").value = "";
+  showMessage(name + " has been added.", "success");
+}
+
+
+// Remove a volunteer (runs when a "Remove" button is clicked)
+// "index" is the position of that volunteer in the list
+function removeVolunteer(index) {
+  var name = volunteers[index].name;
+
+  // Ask the admin to be sure
+  if (confirm("Remove " + name + "?") === true) {
+    volunteers.splice(index, 1);   // take 1 item out at this position
+    saveData("volunteers", volunteers);
+    showVolunteers();
+    showMessage(name + " has been removed.", "success");
+  }
+}
+
+
+// When the Add button is clicked, run addVolunteer
+document.getElementById("addBtn").onclick = addVolunteer;
+
+// Draw the table when the page opens
+showVolunteers();

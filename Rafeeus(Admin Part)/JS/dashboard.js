@@ -1,4 +1,14 @@
-document.getElementById("volCount").textContent = loadData("volunteers").length;
-document.getElementById("orgCount").textContent = loadData("organizations").length;
-document.getElementById("eventCount").textContent = loadData("events").length;
-document.getElementById("noticeCount").textContent = loadData("notices").length;
+// =====================================================
+// dashboard.js - the dashboard page
+// Shows how many items are in each list.
+// =====================================================
+
+var volunteers = loadData("volunteers", startVolunteers);
+var organizations = loadData("organizations", startOrganizations);
+var events = loadData("events", startEvents);
+var notices = loadData("notices", startNotices);
+
+document.getElementById("volCount").textContent = volunteers.length;
+document.getElementById("orgCount").textContent = organizations.length;
+document.getElementById("eventCount").textContent = events.length;
+document.getElementById("noticeCount").textContent = notices.length;

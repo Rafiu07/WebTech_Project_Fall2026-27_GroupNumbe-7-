@@ -1,39 +1,36 @@
-var events = loadData("events");
-var orgs = loadData("organizations");
-var tableBody = document.getElementById("tableBody");
+// =====================================================
+// events.js - the event management page
+// The admin can only look at events here.
+// =====================================================
 
-function orgName(id) {
-  for (var i = 0; i < orgs.length; i++) {
-    if (orgs[i].id === id) {
-      return orgs[i].name;
-    }
+// Get the list of events
+var events = loadData("events", startEvents);
+
+
+// Draw the table on the page
+function showEvents() {
+  var rows = "";
+
+  for (var i = 0; i < events.length; i++) {
+    rows = rows + "<tr>";
+    rows = rows + "<td>" + (i + 1) + "</td>";
+    rows = rows + "<td>" + events[i].title + "</td>";
+    rows = rows + "<td>" + events[i].org + "</td>";
+    rows = rows + "<td><span class='badge'>" + events[i].category + "</span></td>";
+    rows = rows + "<td>" + events[i].location + "</td>";
+    rows = rows + "<td>" + events[i].date + ", " + events[i].time + "</td>";
+    rows = rows + "<td>" + events[i].details + "</td>";
+    rows = rows + "</tr>";
   }
-  return "Unknown";
+
+  if (events.length === 0) {
+    rows = "<tr><td colspan='7' class='empty'>No events found.</td></tr>";
+  }
+
+  document.getElementById("tableBody").innerHTML = rows;
+  document.getElementById("count").textContent = events.length;
 }
 
-document.getElementById("count").textContent = events.length;
 
-if (events.length === 0) {
-  var emptyRow = document.createElement("tr");
-  var emptyCell = makeEl("td", "No events found.", "empty");
-  emptyCell.colSpan = 7;
-  emptyRow.appendChild(emptyCell);
-  tableBody.appendChild(emptyRow);
-}
-
-events.forEach(function (ev, i) {
-  var row = document.createElement("tr");
-  row.appendChild(makeEl("td", i + 1));
-  row.appendChild(makeEl("td", ev.title));
-  row.appendChild(makeEl("td", orgName(ev.orgId)));
-
-  var categoryCell = document.createElement("td");
-  categoryCell.appendChild(makeEl("span", ev.category, "badge"));
-  row.appendChild(categoryCell);
-
-  row.appendChild(makeEl("td", ev.location));
-  row.appendChild(makeEl("td", formatDate(ev.date) + ", " + ev.time));
-  row.appendChild(makeEl("td", ev.details));
-
-  tableBody.appendChild(row);
-});
+// Draw the table when the page opens
+showEvents();

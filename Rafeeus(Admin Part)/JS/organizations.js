@@ -1,66 +1,40 @@
-var orgs = loadData("organizations");
-var tableBody = document.getElementById("tableBody");
-var countEl = document.getElementById("count");
-var form = document.getElementById("addForm");
+// =====================================================
+// organizations.js - the organization management page
+// =====================================================
 
-function render() {
-  tableBody.innerHTML = "";
-  countEl.textContent = orgs.length;
+// Get the lists we need
+var organizations = loadData("organizations", startOrganizations);
+var events = loadData("events", startEvents);
 
-  if (orgs.length === 0) {
-    var emptyRow = document.createElement("tr");
-    var emptyCell = makeEl("td", "No organizations found.", "empty");
-    emptyCell.colSpan = 8;
-    emptyRow.appendChild(emptyCell);
-    tableBody.appendChild(emptyRow);
-    return;
+
+// Draw the table on the page
+function showOrganizations() {
+  var rows = "";
+
+  for (var i = 0; i < organizations.length; i++) {
+    rows = rows + "<tr>";
+    rows = rows + "<td>" + (i + 1) + "</td>";
+    rows = rows + "<td>" + organizations[i].name + "</td>";
+    rows = rows + "<td>" + organizations[i].regNo + "</td>";
+    rows = rows + "<td>" + organizations[i].focus + "</td>";
+    rows = rows + "<td>" + organizations[i].email + "</td>";
+    rows = rows + "<td>" + organizations[i].phone + "</td>";
+    rows = rows + "<td>" + organizations[i].address + "</td>";
+    rows = rows + "<td><button class='btn-danger' onclick='removeOrganization(" + i + ")'>Remove</button></td>";
+    rows = rows + "</tr>";
   }
 
-  orgs.forEach(function (o, i) {
-    var row = document.createElement("tr");
-    row.appendChild(makeEl("td", i + 1));
-    row.appendChild(makeEl("td", o.name));
-    row.appendChild(makeEl("td", o.regNo));
-    row.appendChild(makeEl("td", o.focus));
-    row.appendChild(makeEl("td", o.email));
-    row.appendChild(makeEl("td", o.phone));
-    row.appendChild(makeEl("td", o.address));
-
-    var actionCell = document.createElement("td");
-    var removeBtn = makeEl("button", "Remove", "btn-danger");
-    removeBtn.type = "button";
-    removeBtn.addEventListener("click", function () {
-      removeOrg(o.id, o.name);
-    });
-    actionCell.appendChild(removeBtn);
-    row.appendChild(actionCell);
-
-    tableBody.appendChild(row);
-  });
-}
-
-function removeOrg(id, name) {
-  if (!confirm("Remove " + name + "? Events posted by this organization will also be removed.")) {
-    return;
+  if (organizations.length === 0) {
+    rows = "<tr><td colspan='8' class='empty'>No organizations found.</td></tr>";
   }
-  orgs = orgs.filter(function (o) {
-    return o.id !== id;
-  });
-  saveData("organizations", orgs);
 
-  // Also remove the events this organization posted
-  var events = loadData("events").filter(function (ev) {
-    return ev.orgId !== id;
-  });
-  saveData("events", events);
-
-  render();
-  showMessage(name + " has been removed.", "success");
+  document.getElementById("tableBody").innerHTML = rows;
+  document.getElementById("count").textContent = organizations.length;
 }
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
 
+// Add a new organization (runs when "Add Organization" is clicked)
+function addOrganization() {
   var name = document.getElementById("name").value.trim();
   var regNo = document.getElementById("regNo").value.trim();
   var focus = document.getElementById("focus").value;
@@ -68,30 +42,20 @@ form.addEventListener("submit", function (e) {
   var phone = document.getElementById("phone").value.trim();
   var address = document.getElementById("address").value.trim();
 
+  // 1. All boxes must be filled in
   if (name === "" || regNo === "" || focus === "" || email === "" || phone === "" || address === "") {
     showMessage("Please fill in all fields.", "error");
     return;
   }
 
-  if (!isValidEmail(email)) {
+  // 2. The email must contain an @
+  if (email.indexOf("@") === -1) {
     showMessage("Please enter a valid email address.", "error");
     return;
   }
 
-  if (!/^[0-9+\-\s]{7,16}$/.test(phone)) {
-    showMessage("Please enter a valid phone number.", "error");
-    return;
-  }
-
-  for (var i = 0; i < orgs.length; i++) {
-    if (orgs[i].regNo.toLowerCase() === regNo.toLowerCase()) {
-      showMessage("An organization with this registration number already exists.", "error");
-      return;
-    }
-  }
-
-  orgs.push({
-    id: nextId(orgs),
+  // 3. Add the organization to the list, save, and redraw the table
+  organizations.push({
     name: name,
     regNo: regNo,
     focus: focus,
@@ -99,10 +63,50 @@ form.addEventListener("submit", function (e) {
     phone: phone,
     address: address
   });
-  saveData("organizations", orgs);
-  render();
-  form.reset();
-  showMessage(name + " has been added.", "success");
-});
+  saveData("organizations", organizations);
+  showOrganizations();
 
-render();
+  // 4. Clear the boxes and show a message
+  document.getElementById("name").value = "";
+  document.getElementById("regNo").value = "";
+  document.getElementById("focus").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("address").value = "";
+  showMessage(name + " has been added.", "success");
+}
+
+
+// Remove an organization (runs when a "Remove" button is clicked)
+function removeOrganization(index) {
+  var name = organizations[index].name;
+
+  if (confirm("Remove " + name + "? Events posted by this organization will also be removed.") === true) {
+
+    // 1. Take the organization out of its list
+    organizations.splice(index, 1);
+    saveData("organizations", organizations);
+
+    // 2. Make a new events list that keeps only the events
+    //    that were NOT posted by this organization
+    var keptEvents = [];
+    for (var i = 0; i < events.length; i++) {
+      if (events[i].org !== name) {
+        keptEvents.push(events[i]);
+      }
+    }
+    events = keptEvents;
+    saveData("events", events);
+
+    // 3. Redraw the table and show a message
+    showOrganizations();
+    showMessage(name + " has been removed.", "success");
+  }
+}
+
+
+// When the Add button is clicked, run addOrganization
+document.getElementById("addBtn").onclick = addOrganization;
+
+// Draw the table when the page opens
+showOrganizations();

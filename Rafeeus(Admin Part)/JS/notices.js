@@ -1,67 +1,73 @@
-var notices = loadData("notices");
-var listEl = document.getElementById("noticeList");
-var countEl = document.getElementById("count");
-var form = document.getElementById("addForm");
+// =====================================================
+// notices.js - the notice board page
+// =====================================================
 
-function render() {
-  listEl.innerHTML = "";
-  countEl.textContent = notices.length;
+// Get the list of notices
+var notices = loadData("notices", startNotices);
+
+
+// Draw the notices on the page
+function showNotices() {
+  var html = "";
+
+  for (var i = 0; i < notices.length; i++) {
+    html = html + "<div class='notice'>";
+    html = html + "<div>";
+    html = html + "<h3>" + notices[i].title + "</h3>";
+    html = html + "<p>" + notices[i].message + "</p>";
+    html = html + "<span class='notice-date'>Posted on " + notices[i].date + "</span>";
+    html = html + "</div>";
+    html = html + "<button class='btn-danger' onclick='removeNotice(" + i + ")'>Remove</button>";
+    html = html + "</div>";
+  }
 
   if (notices.length === 0) {
-    listEl.appendChild(makeEl("p", "No notices yet.", "empty"));
-    return;
+    html = "<p class='empty'>No notices yet.</p>";
   }
 
-  notices.forEach(function (n) {
-    var box = document.createElement("div");
-    box.className = "notice";
-
-    var content = document.createElement("div");
-    content.appendChild(makeEl("h3", n.title));
-    content.appendChild(makeEl("p", n.message));
-    content.appendChild(makeEl("span", "Posted on " + formatDate(n.date), "notice-date"));
-
-    var removeBtn = makeEl("button", "Remove", "btn-danger");
-    removeBtn.type = "button";
-    removeBtn.addEventListener("click", function () {
-      removeNotice(n.id, n.title);
-    });
-
-    box.appendChild(content);
-    box.appendChild(removeBtn);
-    listEl.appendChild(box);
-  });
+  document.getElementById("noticeList").innerHTML = html;
+  document.getElementById("count").textContent = notices.length;
 }
 
-function removeNotice(id, title) {
-  if (!confirm("Remove the notice \"" + title + "\"?")) {
-    return;
-  }
-  notices = notices.filter(function (n) {
-    return n.id !== id;
-  });
-  saveData("notices", notices);
-  render();
-  showMessage("Notice removed.", "success");
-}
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
+// Post a new notice (runs when "Post Notice" is clicked)
+function addNotice() {
   var title = document.getElementById("title").value.trim();
   var text = document.getElementById("text").value.trim();
 
+  // Both boxes must be filled in
   if (title === "" || text === "") {
     showMessage("Please fill in the title and the message.", "error");
     return;
   }
 
-  // newest notice goes on top
-  notices.unshift({ id: nextId(notices), title: title, message: text, date: todayString() });
-  saveData("notices", notices);
-  render();
-  form.reset();
-  showMessage("Notice posted.", "success");
-});
+  // Today's date, for example "Wed Nov 18 2026"
+  var today = new Date().toDateString();
 
-render();
+  // unshift puts the new notice at the START of the list, so it shows on top
+  notices.unshift({ title: title, message: text, date: today });
+  saveData("notices", notices);
+  showNotices();
+
+  document.getElementById("title").value = "";
+  document.getElementById("text").value = "";
+  showMessage("Notice posted.", "success");
+}
+
+
+// Remove a notice (runs when a "Remove" button is clicked)
+function removeNotice(index) {
+  if (confirm("Remove this notice?") === true) {
+    notices.splice(index, 1);   // take 1 item out at this position
+    saveData("notices", notices);
+    showNotices();
+    showMessage("Notice removed.", "success");
+  }
+}
+
+
+// When the Post button is clicked, run addNotice
+document.getElementById("addBtn").onclick = addNotice;
+
+// Draw the notices when the page opens
+showNotices();

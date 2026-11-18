@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volunteer Management</title>
-  <link rel="stylesheet" href="../Design/style.css">
-  <script src="../JS/app.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="admin">
 
@@ -28,23 +27,21 @@
 
     <section class="card">
       <h2>Add Volunteer</h2>
-      <form id="addForm">
-        <div class="form-grid">
-          <div>
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Enter full name">
-          </div>
-          <div>
-            <label for="phone">Phone Number</label>
-            <input type="text" id="phone" placeholder="e.g. 01712-345678">
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter email">
-          </div>
+      <div class="form-grid">
+        <div>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter full name">
         </div>
-        <button type="submit" class="btn">Add Volunteer</button>
-      </form>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="e.g. 01712-345678">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email">
+        </div>
+      </div>
+      <button type="button" id="addBtn" class="btn">Add Volunteer</button>
     </section>
 
     <section class="card">
@@ -66,7 +63,8 @@
     </section>
   </main>
 
-  <script src="../JS/volunteers.js"></script>
+  <script src="app.js"></script>
+  <script src="volunteers.js"></script>
 
 </body>
 </html>
