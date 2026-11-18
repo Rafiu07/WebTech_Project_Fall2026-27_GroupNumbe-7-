@@ -1,0 +1,261 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f2ff;
+    color: #222;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    padding: 30px 20px;
+    background: #170f65;
+}
+
+.brand-name {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #4a3aff;
+}
+
+.sidebar .logout {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    right: 20px;
+}
+
+/* ---------- Main ---------- */
+.main-section {
+    margin-left: 240px;
+    padding: 25px 40px;
+}
+
+h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+}
+
+/* ---------- Profile ---------- */
+.top-bar {
+    position: relative;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+#profileBtn {
+    padding: 6px 16px 6px 6px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 14px rgba(23, 15, 101, 0.15);
+}
+
+.avatar {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #4a3aff;
+    color: white;
+    text-align: center;
+}
+
+#profileMenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 46px;
+    width: 160px;
+    padding: 10px 14px;
+    background: white;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+#profileMenu a {
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #4a3aff;
+    text-decoration: none;
+}
+
+/* ---------- Welcome ---------- */
+.welcome {
+    padding: 30px;
+    background: #4a3aff;
+    color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(74, 58, 255, 0.35);
+}
+
+.welcome h1 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+}
+
+.welcome p {
+    margin: 0 0 18px 0;
+}
+
+.welcome h3 {
+    margin-top: 28px;
+}
+
+#exploreBtn {
+    padding: 11px 24px;
+    background: white;
+    color: #4a3aff;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.stats {
+    display: flex;
+}
+
+.stat-box {
+    flex: 1;
+    padding: 15px;
+    margin-right: 15px;
+    background: white;
+    border-radius: 10px;
+    color: #555;
+    font-size: 13px;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
+}
+
+.stat-box strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 28px;
+    color: #4a3aff;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    padding: 25px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(23, 15, 101, 0.12);
+}
+
+.two-column {
+    display: flex;
+    margin: 25px 0;
+}
+
+.two-column .card {
+    flex: 1;
+}
+
+.two-column .card:first-child {
+    margin-right: 20px;
+}
+
+.card p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px 6px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.approved {
+    color: #1b6e3c;
+    font-weight: bold;
+}
+
+.pending {
+    color: #7a4f00;
+    font-weight: bold;
+}
+
+.rejected {
+    color: #9b1c1c;
+    font-weight: bold;
+}
+
+/* ---------- Recommended ---------- */
+.job {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+}
+
+.job h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+
+.job p {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+}
+
+.job span {
+    font-size: 13px;
+    color: #4a3aff;
+}
+
+.apply-btn {
+    padding: 11px 22px;
+    background: #4a3aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.apply-btn:hover {
+    background: #170f65;
+}

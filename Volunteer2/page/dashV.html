@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../design/dashV.css">
+        <script src="../js/dashV.js"></script>
+        <title>Volunteer Dashboard</title>
+    </head>
+    <body>
+        <div class="sidebar">
+            <span class="brand-name">I'm IN</span>
+            <a href="#" class="active">Dashboard</a>
+            <a href="profileV.html">My Profile</a>
+            <a href="#">Explore Opportunities</a>
+            <a href="#">My Applications</a>
+            <a href="#">Messages</a>
+            <a href="#">Settings</a>
+            <a href="logIn.html" class="logout">Logout</a>
+        </div>
+
+        <div class="main-section">
+
+            <div class="top-bar">
+                <button type="button" id="profileBtn" onclick="toggleProfile()">
+                    <span class="avatar">A</span> Atia123
+                </button>
+                <div id="profileMenu">
+                    <a href="profileV.html">My Profile</a>
+                    <a href="logIn.html">Log out</a>
+                </div>
+            </div>
+
+            <div class="welcome">
+                <h1>Welcome Back, Atia!</h1>
+                <p>There are 24 new community initiatives. Ready to make an impact?</p>
+                <button type="button" id="exploreBtn">Explore Causes</button>
+
+                <h3>What is happening with your volunteer work:</h3>
+                <div class="stats">
+                    <div class="stat-box">Hours Volunteered<strong>24</strong></div>
+                    <div class="stat-box">Applications Sent<strong id="statApplied">3</strong></div>
+                    <div class="stat-box">Upcoming Shifts<strong>2</strong></div>
+                    <div class="stat-box">Completed Tasks<strong>5</strong></div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="card">
+                    <h3>Upcoming Shifts</h3>
+                    <p><strong>Substitute Tutor</strong><br>Sunday, 4:00 PM - Dhaka</p>
+                    <p><strong>Camp Volunteer</strong><br>Friday, 9:00 AM - Bandarban</p>
+                </div>
+
+                <div class="card">
+                    <h3>My Applications</h3>
+                    <table>
+                        <tr>
+                            <th>Opportunity</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>Substitute Tutor</td>
+                            <td class="approved">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>Camp Volunteer</td>
+                            <td class="pending">Pending</td>
+                        </tr>
+                        <tr>
+                            <td>Graphic Designer</td>
+                            <td class="rejected">Not Selected</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card recommended">
+                <h3>Recommended For You</h3>
+
+                <div class="job">
+                    <div>
+                        <h4>Community Outreach Coordinator</h4>
+                        <p>Dhaka | Part-time / Weekend | Posted Today</p>
+                        <span>#VOL-102718</span>
+                    </div>
+                    <button type="button" class="apply-btn" onclick="applyNow(this)">Apply Now</button>
+                </div>
+
+                <div class="job">
+                    <div>
+                        <h4>Youth STEM Mentor &amp; Tutor</h4>
+                        <p>Remote / Online | Flexible Hours | Posted Today</p>
+                        <span>#VOL-102763</span>
+                    </div>
+                    <button type="button" class="apply-btn" onclick="applyNow(this)">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

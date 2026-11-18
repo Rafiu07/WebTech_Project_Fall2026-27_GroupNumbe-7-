@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../design/reg.css">
+        <script src="../js/reg.js"></script>
+        <title>Volunteer Registration</title>
+    </head>
+    <body>
+        <div class="reg-container">
+            <img src="../asset/reg.jpg" id="BackImage" alt="Registration">
+
+            <div class="form-section">
+                <div class="brand">
+                    <span class="icon"></span>
+                    <span class="brand-name">I'm IN</span>
+                </div>
+
+                <h1>Volunteer Registration</h1>
+                <p>Fill out the form below to register and explore available opportunities.</p>
+
+                <div class="notice">
+                    <h3>Application Guidelines</h3>
+                    <p>Please fill out all required fields accurately. Make sure your uploaded CV is up to date before submitting.</p>
+                </div>
+
+                <form action="#" method="POST" onsubmit="return collect_reg_data()">
+
+                    <h3>Volunteer Info</h3>
+
+                    <label for="volunteerName">Volunteer Name</label><br>
+                    <input type="text" id="volunteerName" name="volunteerName" placeholder="Enter your full name">
+                    <span id="NameError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="volunteerEmail">Volunteer Email</label><br>
+                    <input type="text" id="volunteerEmail" name="volunteerEmail" placeholder="xyz@gmail.com">
+                    <span id="EmailError" class="error-message"></span>
+                    <br><br>
+
+                    <label>Volunteer Gender</label><br>
+                    <label class="remember-label"><input type="radio" id="male" name="volunteerGender" value="Male" checked> Male</label>
+                    <label class="remember-label"><input type="radio" id="female" name="volunteerGender" value="Female"> Female</label>
+                    <span id="GenderError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="volunteerDOB">Volunteer Date of Birth</label><br>
+                    <input type="date" id="volunteerDOB" name="volunteerDOB">
+                    <span id="DOBError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="skills">Skills</label><br>
+                    <select id="skills" name="skills">
+                        <option value="">Select Skills</option>
+                        <option value="technical">Technical &amp; Digital</option>
+                        <option value="media">Creative &amp; Media</option>
+                        <option value="management">Operational &amp; Management</option>
+                        <option value="logistics">Logistics &amp; Support</option>
+                    </select>
+                    <span id="SkillsError" class="error-message"></span>
+                    <br><br>
+
+                    <h3>Volunteer Application</h3>
+
+                    <label for="volunteerAge">Volunteer Age</label><br>
+                    <input type="number" id="volunteerAge" name="volunteerAge" placeholder="Enter your age">
+                    <span id="AgeError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="volunteerPhone">Volunteer Phone Number</label><br>
+                    <input type="text" id="volunteerPhone" name="volunteerPhone" placeholder="01XXXXXXXXX">
+                    <span id="PhoneError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="volunteerCV">Volunteer CV</label><br>
+                    <input type="file" id="volunteerCV" name="volunteerCV">
+                    <span id="CVError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="volunteerAddress">Volunteer Address</label><br>
+                    <textarea id="volunteerAddress" name="volunteerAddress" placeholder="Enter your home address" rows="4"></textarea>
+                    <span id="AddressError" class="error-message"></span>
+                    <br><br>
+
+                    <label>Preferred Days (You may select multiple)</label><br>
+                    <label class="remember-label"><input type="checkbox" name="avail" value="Weekdays"> Weekdays (Sunday to Thursday)</label><br>
+                    <label class="remember-label"><input type="checkbox" name="avail" value="Weekend"> Weekend (Friday to Saturday)</label><br>
+                    <label class="remember-label"><input type="checkbox" name="avail" value="SpecificDays"> Specific Days</label><br>
+                    <textarea id="available" name="availDetails" placeholder="Enter your specific days with available time" rows="3"></textarea>
+                    <span id="AvailError" class="error-message"></span>
+                    <br><br>
+
+                    <h3>Current Volunteer Opportunities</h3>
+                    <table class="opportunity-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Opportunity Title</th>
+                                <th>Organization</th>
+                                <th>Required Hour</th>
+                                <th>Location</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>Substitute Tutor</td>
+                                <td>X Coaching Center</td>
+                                <td>4 hrs / week</td>
+                                <td>Dhaka (On-site)</td>
+                                <td><a href="#">Apply Now</a></td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>Camp Volunteer</td>
+                                <td>Health Foundation</td>
+                                <td>8 hours total</td>
+                                <td>Bandarban</td>
+                                <td><a href="#">Apply Now</a></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>Graphic Designer</td>
+                                <td>Terracotta Creation</td>
+                                <td>1 post / payment</td>
+                                <td>Remote</td>
+                                <td><a href="#">Apply Now</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+
+                    <input type="submit" id="submit" value="Submit Application">
+                    <br><br>
+                    <input type="reset" id="reset" value="Reset">
+                    <br><br>
+                </form>
+
+                <p class="signup-text">Already have an account? <a href="logIn.html">Log in</a></p>
+                <p class="signup-text">Don't want to volunteer? <a href="https://share.google/26BFKXbf2mNwoZ9wi">Visit this website</a></p>
+                <p class="signup-text">&copy;2026 Volunteer Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>

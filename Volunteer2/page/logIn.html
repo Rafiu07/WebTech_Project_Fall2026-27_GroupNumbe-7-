@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../design/LogInStyle.css">
+        <script src="../js/logInScript.js"></script>
+        <title>Login Page</title>
+    </head>
+    <body>
+        <div class="login-container">
+                <img src="../asset/LogIn.jpg" id="sideImage" alt="Login">
+
+                <div class="form-section">
+                <div class="brand">
+                    <span class="icon"></span>
+                    <span class="brand-name">I'm IN</span>
+                </div>
+
+                <h1>Welcome Back!</h1>
+                <p>Enter Your Details Below</p>
+
+                <form action="#" method="POST" onsubmit="return collect_login_data()">
+                    <label for="Username">Username</label><br>
+                    <input type="text" id="Username" name="Username" placeholder="Atia123" required>
+                    <span id="UsernameError" class="error-message"></span>
+                    <br><br>
+
+                    <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <span id="PasswordError" class="error-message"></span>
+                    <br>
+
+                    <div class="form-options">
+                        <label class="remember-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe" checked> Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    <br><br>
+
+                    <input type="submit" id="submit" value="Log in">
+                    <br><br>
+
+                </form>
+
+                <p class="signup-text">Don't have an account? <a href="reg.html">Sign Up</a></p>
+            </div>
+        </div>
+    </body>
+</html>
