@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin">
+
+  <nav class="navbar">
+    <a href="dashboard.html" class="brand">NGO Admin</a>
+    <ul class="nav-links">
+      <li><a href="volunteers.html">Volunteer Management</a></li>
+      <li><a href="organizations.html">Organization Management</a></li>
+      <li><a href="events.html" class="active">Event Management</a></li>
+      <li><a href="notices.html">Notice Board</a></li>
+    </ul>
+    <button type="button" id="logoutBtn" class="logout-btn">Logout</button>
+  </nav>
+
+  <main class="container">
+    <h1>Event Management</h1>
+    <p class="subtitle">See which organization has posted which event.</p>
+
+    <section class="card">
+      <h2>All Events (<span id="count">0</span>)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Event</th>
+              <th>Posted By</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Date &amp; Time</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="events.js"></script>
+
+</body>
+</html>

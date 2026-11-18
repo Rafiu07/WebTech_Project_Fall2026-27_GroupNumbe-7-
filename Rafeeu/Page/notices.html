@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin">
+
+  <nav class="navbar">
+    <a href="dashboard.html" class="brand">NGO Admin</a>
+    <ul class="nav-links">
+      <li><a href="volunteers.html">Volunteer Management</a></li>
+      <li><a href="organizations.html">Organization Management</a></li>
+      <li><a href="events.html">Event Management</a></li>
+      <li><a href="notices.html" class="active">Notice Board</a></li>
+    </ul>
+    <button type="button" id="logoutBtn" class="logout-btn">Logout</button>
+  </nav>
+
+  <main class="container">
+    <h1>Notice Board</h1>
+    <p class="subtitle">Post and remove notices.</p>
+
+    <div id="message" class="message"></div>
+
+    <section class="card">
+      <h2>Post a Notice</h2>
+      <div class="form-grid">
+        <div class="full">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="Enter notice title">
+        </div>
+        <div class="full">
+          <label for="text">Message</label>
+          <textarea id="text" rows="3" placeholder="Write the notice here"></textarea>
+        </div>
+      </div>
+      <button type="button" id="addBtn" class="btn">Post Notice</button>
+    </section>
+
+    <section class="card">
+      <h2>All Notices (<span id="count">0</span>)</h2>
+      <div id="noticeList"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script src="notices.js"></script>
+
+</body>
+</html>
