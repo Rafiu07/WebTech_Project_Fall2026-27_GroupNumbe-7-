@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#BackImage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-section {
+    position: relative;
+    width: 1100px;
+    margin: 40px auto;
+    padding: 50px 45px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4a3aff;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.form-section > p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.notice {
+    padding: 12px 18px;
+    margin-bottom: 25px;
+    background: #f3f2ff;
+    border-left: 5px solid #4a3aff;
+    border-radius: 8px;
+}
+
+.notice h3 {
+    margin: 0 0 5px 0;
+}
+
+.notice p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
+
+.remember-label {
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+.opportunity-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.opportunity-table th,
+.opportunity-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.opportunity-table th {
+    background: #4a3aff;
+    color: white;
+}
+
+.opportunity-table a,
+.signup-text a {
+    color: #4a3aff;
+    text-decoration: none;
+}
+
+.opportunity-table a:hover,
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+#submit,
+#reset {
+    width: 100%;
+    padding: 13px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#submit {
+    background: #4a3aff;
+}
+
+#submit:hover {
+    background: #170f65;
+}
+
+#reset {
+    background: #777;
+}
+
+#reset:hover {
+    background: #555;
+}
+
+.signup-text {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}

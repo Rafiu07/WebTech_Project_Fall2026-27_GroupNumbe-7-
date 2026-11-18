@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../design/profileV.css">
+        <script src="../js/profileV.js"></script>
+        <title>Volunteer Profile</title>
+    </head>
+    <body onload="loadProfile()">
+        <div class="sidebar">
+            <span class="brand-name">I'm IN</span>
+            <a href="dashV.html">Dashboard</a>
+            <a href="#" class="active">My Profile</a>
+            <a href="logIn.html" class="logout">Logout</a>
+        </div>
+
+        <div class="main-section">
+
+            <div class="card header-card">
+                <h1>Atia</h1>
+            </div>
+
+            <div class="two-column">
+
+                <div class="left-column">
+
+                    <div class="card about-card">
+                        <div class="card-header">
+                            <h3>About Me</h3>
+                            <button type="button" id="aboutBtn" class="edit-btn" onclick="editAbout()">Edit</button>
+                        </div>
+                        <p id="aboutText">Passionate about community service and youth education. I enjoy teaching, organizing events and helping people in need.</p>
+                        <textarea id="aboutInput" class="edit-box" rows="5"></textarea>
+                        <span id="aboutError" class="error-message"></span>
+                    </div>
+
+                    <div class="card skills-card">
+                        <div class="card-header">
+                            <h3>Skills</h3>
+                            <button type="button" id="skillsBtn" class="edit-btn" onclick="editSkills()">Edit</button>
+                        </div>
+                        <div id="skillsList"></div>
+                        <input type="text" id="skillsInput" class="edit-box" placeholder="Separate skills with commas">
+                        <span id="skillsError" class="error-message"></span>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Availability</h3>
+                            <button type="button" id="availBtn" class="edit-btn" onclick="editAvailability()">Edit</button>
+                        </div>
+                        <div id="availGrid"></div>
+                    </div>
+
+                </div>
+
+                <div class="right-column">
+
+                    <div class="card">
+                        <h3>Impact Dashboard</h3>
+                        <div class="stats">
+                            <div class="stat-box">
+                                <span class="stat-label">Total Hours Logged</span>
+                                <strong id="hoursText">142</strong>
+                                <input type="number" id="hoursInput" class="edit-box">
+                                <button type="button" id="hoursBtn" class="edit-btn" onclick="editHours()">Edit</button>
+                                <span id="hoursError" class="error-message"></span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Events Attended</span>
+                                <strong>18</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card cv-card">
+                        <h3>My CV</h3>
+                        <p>Attach your latest CV (PDF or Word file).</p>
+                        <input type="file" id="cvFile" onchange="showCV()">
+                        <span id="cvError" class="error-message"></span>
+                        <div id="cvInfo" class="cv-info">No CV attached yet.</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="footer-text">&copy;2026 Volunteer Management System. All rights reserved.</p>
+        </div>
+    </body>
+</html>
